@@ -31,8 +31,6 @@ void loop() {
 		analogWrite(out, map(trimValue, 0, 1023, 0, 255));
 	}
 
-
-
 	lastTrimValue = trimValue;
 }
 
