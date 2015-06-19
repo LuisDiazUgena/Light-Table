@@ -1,0 +1,238 @@
+EESchema Schematic File Version 2
+LIBS:attiny
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:icsp
+LIBS:LightTable-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ATTINY85-P IC?
+U 1 1 55842EAE
+P 5500 3000
+F 0 "IC?" H 4350 3400 40  0000 C CNN
+F 1 "ATTINY85-P" H 6500 2600 40  0000 C CNN
+F 2 "DIP8" H 6500 3000 35  0000 C CIN
+F 3 "" H 5500 3000 60  0000 C CNN
+	1    5500 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L CRYSTAL X?
+U 1 1 55842F21
+P 3050 3350
+F 0 "X?" H 3050 3500 50  0000 C CNN
+F 1 "CRYSTAL" H 3050 3200 50  0000 C CNN
+F 2 "" H 3050 3350 60  0000 C CNN
+F 3 "" H 3050 3350 60  0000 C CNN
+	1    3050 3350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2650 3050 4150 3050
+Wire Wire Line
+	3400 3150 4150 3150
+Wire Wire Line
+	3400 3150 3400 3650
+Wire Wire Line
+	3400 3650 2650 3650
+$Comp
+L C C?
+U 1 1 558431BA
+P 2450 3050
+F 0 "C?" H 2500 3150 50  0000 L CNN
+F 1 "22pF" H 2500 2950 50  0000 L CNN
+F 2 "" H 2488 2900 30  0000 C CNN
+F 3 "" H 2450 3050 60  0000 C CNN
+	1    2450 3050
+	0    1    1    0   
+$EndComp
+$Comp
+L C C?
+U 1 1 55843214
+P 2450 3650
+F 0 "C?" H 2500 3750 50  0000 L CNN
+F 1 "22pF" H 2500 3550 50  0000 L CNN
+F 2 "" H 2488 3500 30  0000 C CNN
+F 3 "" H 2450 3650 60  0000 C CNN
+	1    2450 3650
+	0    1    1    0   
+$EndComp
+Connection ~ 3050 3650
+Connection ~ 3050 3050
+Wire Wire Line
+	2250 3050 2250 3650
+Text GLabel 1800 3350 0    60   Input ~ 0
+GND
+Wire Wire Line
+	1800 3350 2250 3350
+Connection ~ 2250 3350
+$Comp
+L R R?
+U 1 1 5584330F
+P 3950 3650
+F 0 "R?" V 4030 3650 50  0000 C CNN
+F 1 "R" V 3957 3651 50  0000 C CNN
+F 2 "" V 3880 3650 30  0000 C CNN
+F 3 "" H 3950 3650 30  0000 C CNN
+	1    3950 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3950 3400 3950 3250
+Wire Wire Line
+	3950 3250 4150 3250
+Text GLabel 3950 4100 3    60   Input ~ 0
+VCC
+Wire Wire Line
+	3950 4100 3950 3900
+Text GLabel 7200 3250 2    60   Input ~ 0
+GND
+Wire Wire Line
+	7200 3250 6850 3250
+Text GLabel 7200 2750 2    60   Input ~ 0
+VCC
+Wire Wire Line
+	7200 2750 6850 2750
+$Comp
+L POT RV?
+U 1 1 5584353F
+P 3450 2400
+F 0 "RV?" H 3450 2300 50  0000 C CNN
+F 1 "POT" H 3450 2400 50  0000 C CNN
+F 2 "" H 3450 2400 60  0000 C CNN
+F 3 "" H 3450 2400 60  0000 C CNN
+	1    3450 2400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4150 2950 3450 2950
+Wire Wire Line
+	3450 2950 3450 2550
+Text GLabel 3850 2400 2    60   Input ~ 0
+VCC
+Wire Wire Line
+	3850 2400 3700 2400
+Text GLabel 3050 2400 0    60   Input ~ 0
+GND
+Wire Wire Line
+	3050 2400 3200 2400
+$Comp
+L LM7805 U?
+U 1 1 558438B8
+P 9150 1500
+F 0 "U?" H 9300 1304 60  0000 C CNN
+F 1 "LM7805" H 9150 1700 60  0000 C CNN
+F 2 "" H 9150 1500 60  0000 C CNN
+F 3 "" H 9150 1500 60  0000 C CNN
+	1    9150 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L +12V #PWR?
+U 1 1 55843A96
+P 7950 1450
+F 0 "#PWR?" H 7950 1300 60  0001 C CNN
+F 1 "+12V" H 7950 1590 60  0000 C CNN
+F 2 "" H 7950 1450 60  0000 C CNN
+F 3 "" H 7950 1450 60  0000 C CNN
+	1    7950 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7950 1450 8750 1450
+Text GLabel 9150 2300 3    60   Input ~ 0
+GND
+Wire Wire Line
+	9150 1750 9150 2300
+$Comp
+L C C?
+U 1 1 55843C24
+P 8400 1850
+F 0 "C?" H 8450 1950 50  0000 L CNN
+F 1 "330nF" H 8450 1750 50  0000 L CNN
+F 2 "" H 8438 1700 30  0000 C CNN
+F 3 "" H 8400 1850 60  0000 C CNN
+	1    8400 1850
+	-1   0    0    1   
+$EndComp
+Connection ~ 9150 2100
+$Comp
+L C C?
+U 1 1 55843F41
+P 9900 1850
+F 0 "C?" H 9950 1950 50  0000 L CNN
+F 1 "100nF" H 9950 1750 50  0000 L CNN
+F 2 "" H 9938 1700 30  0000 C CNN
+F 3 "" H 9900 1850 60  0000 C CNN
+	1    9900 1850
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9900 2100 9900 2050
+Text GLabel 10400 1450 2    60   Input ~ 0
+VCC
+Wire Wire Line
+	10400 1450 9550 1450
+Wire Wire Line
+	9900 1650 9900 1450
+Connection ~ 9900 1450
+Wire Wire Line
+	8400 1450 8400 1650
+Connection ~ 8400 1450
+Wire Wire Line
+	8400 2050 8400 2100
+Wire Wire Line
+	8400 2100 9900 2100
+$Comp
+L ICSP U?
+U 1 1 558444CC
+P 5400 4650
+F 0 "U?" H 5050 4950 60  0000 C CNN
+F 1 "ICSP" H 5400 4950 60  0000 C CNN
+F 2 "" H 5400 4650 60  0000 C CNN
+F 3 "" H 5400 4650 60  0000 C CNN
+	1    5400 4650
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
