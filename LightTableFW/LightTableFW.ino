@@ -7,6 +7,11 @@ Attiny85 based light table --
 Firmware
 
 */
+#include <SoftwareSerial.h>
+#define rxPin 3
+#define txPin 4
+
+SoftwareSerial btserial(rxPin, txPin);
 
 int trimmer = A1, out = 0;
 float trimValue = 0, lastTrimValue = 0;
@@ -17,7 +22,13 @@ void setup() {
 	pinMode(trimmer, INPUT);
 	pinMode(out, OUTPUT);
 
+	pinMode(rxPin, INPUT);
+   pinMode(txPin, OUTPUT);
+
 	digitalWrite(out, LOW);
+
+	btserial.begin(19200);
+
 	test();
 }
 void loop() {
