@@ -31,7 +31,7 @@ int color = 0; // 0:red, 1: green, 2:blue
 int red = 255, green = 255, blue = 255;
 
 //Time variables
-long unsigned nextTime, intervale = 1000;
+long unsigned nextTime, intervale = 1000; // Change intervale to modify long time click
 bool clicked = false;
 void setup() {
 
@@ -69,12 +69,11 @@ void loop() {
   }
 
   if (clicked) {
-    if (millis() > nextTime && clicked) {
+    if (millis() > nextTime) {
       //Long click
-      Serial.println("long");
       clear();
     } else {
-      Serial.println("short");
+      //Short click
       manageColor();
     }
     clicked = false;
