@@ -28,13 +28,16 @@ bool debug = false;
 //led strip
 int pinR = 11, pinG = 10, pinB = 9; // PWM pins
 int color = 0; // 0:red, 1: green, 2:blue
-int red=255,green=255,blue=255;
+int red = 255, green = 255, blue = 255;
 
-void setup(){
+//Time variables
+long unsigned nextTime, intervale = 1000;
+bool clicked = false;
+void setup() {
 
   Serial.begin (19200); // Needs to be 19200 to work with ZUM BT-328 Bluetooth.
 
-	//Encoder pins
+  //Encoder pins
   pinMode(encoderPin1, INPUT);
   pinMode(encoderPin2, INPUT);
 
@@ -48,99 +51,110 @@ void setup(){
   attachInterrupt(0, updateEncoder, CHANGE);
   attachInterrupt(1, updateEncoder, CHANGE);
 
-	//Led strip pins
-	pinMode(pinR, OUTPUT);
-	pinMode(pinG, OUTPUT);
-	pinMode(pinB, OUTPUT);
+  //Led strip pins
+  pinMode(pinR, OUTPUT);
+  pinMode(pinG, OUTPUT);
+  pinMode(pinB, OUTPUT);
 
-	// turn off leds by default at boot
-	digitalWrite(pinR,LOW);
-	digitalWrite(pinG,LOW);
-	digitalWrite(pinB,LOW);
+  // turn off leds by default at boot
+  clear();
 
 }
 
-void loop(){
+void loop() {
 
-  if(digitalRead(encoderSwitchPin)){
-    //button is being pushed
-		if (debug) Serial.println("click!");
-		manageColor();
-	}
+  nextTime = millis() + intervale;
+  while (digitalRead(encoderSwitchPin)) {
+    clicked = true;
+  }
 
-	encoderValue = constrain(encoderValue,0,255);
-	analogWrite(pinR, encoderValue);
-	analogWrite(pinG, encoderValue);
-	analogWrite(pinB, encoderValue);
+  if (clicked) {
+    if (millis() > nextTime && clicked) {
+      //Long click
+      Serial.println("long");
+      clear();
+    } else {
+      Serial.println("short");
+      manageColor();
+    }
+    clicked = false;
+  }else{
+    encoderValue = constrain(encoderValue, 0, 255);
+    analogWrite(pinR, encoderValue);
+    analogWrite(pinG, encoderValue);
+    analogWrite(pinB, encoderValue);
+  }
 
-	Serial.println(encoderValue);
-	
+
   delay(100); //just here to slow down the output, and show it. will work even during a delay
 }
+void clear(){
+  digitalWrite(pinR, LOW);
+  digitalWrite(pinG, LOW);
+  digitalWrite(pinB, LOW);
+  encoderValue=0;
+}
+int manageColor() {
+  delay(250);
+  if (debug){
+    Serial.print("color = ");
+    Serial.println(color);
+  }
 
-int manageColor(){
-	delay(250);
+  encoderValue = 0;
+  if (color == 0) {
+    clear();
+  }
 
-	Serial.print("color = ");
-	Serial.println(color);
+  do {
+    if (color == 0) {
+      //Red is changing
+      red = constrain(encoderValue, 0, 255);
+      analogWrite(pinR, red);
+    } else if (color == 1) {
+      //Green is changing
+      green = constrain(encoderValue, 0, 255);
+      analogWrite(pinG, green);
+    } else if (color == 2) {
+      //Blue is changing
+      blue = constrain(encoderValue, 0, 255);
+      analogWrite(pinB, blue);
+    }
+  } while (!digitalRead(encoderSwitchPin));
 
-	encoderValue=0;
-	if(color==0){
-	digitalWrite(pinR,LOW);
-	digitalWrite(pinG,LOW);
-	digitalWrite(pinB,LOW);
-	}
+  color++;
 
-	do{
-		if(color == 0){
-			//Red is changing
-			red = constrain(encoderValue,0,255);
-			analogWrite(pinR, red);
-		}else if(color == 1){
-			//Green is changing
-			green = constrain(encoderValue,0,255);
-			analogWrite(pinG,green);
-		}else if(color == 2){
-			//Blue is changing
-			blue = constrain(encoderValue,0,255);
-			analogWrite(pinB, blue);
-		}
-	}while(!digitalRead(encoderSwitchPin));
-
-	color++;
-
-	if(color!=3){
-		manageColor();
-	}else{
-		analogWrite(pinR, red);
-		analogWrite(pinG,green);
-		analogWrite(pinB, blue);
-		color=0;
-		delay(250);
-		return 0;
-	}
+  if (color != 3) {
+    manageColor();
+  } else {
+    analogWrite(pinR, red);
+    analogWrite(pinG, green);
+    analogWrite(pinB, blue);
+    color = 0;
+    delay(250);
+    return 0;
+  }
 
 }
-void updateEncoder(){
+void updateEncoder() {
 
   int MSB = digitalRead(encoderPin1); //MSB = most significant bit
   int LSB = digitalRead(encoderPin2); //LSB = least significant bit
 
-  int encoded = (MSB << 1) |LSB; //converting the 2 pin value to single number
+  int encoded = (MSB << 1) | LSB; //converting the 2 pin value to single number
 
   sum  = (lastEncoded << 2) | encoded; //adding it to the previous encoded value
 
-  if(sum == 0b1101 || sum == 0b0100 || sum == 0b0010 || sum == 0b1011) encoderValue ++;
-  if(sum == 0b1110 || sum == 0b0111 || sum == 0b0001 || sum == 0b1000) encoderValue --;
+  if (sum == 0b1101 || sum == 0b0100 || sum == 0b0010 || sum == 0b1011) encoderValue ++;
+  if (sum == 0b1110 || sum == 0b0111 || sum == 0b0001 || sum == 0b1000) encoderValue --;
 
-	if (debug){
-		Serial.print("lastencoded: ");
-	   Serial.println(lastEncoded);
+  if (debug) {
+    Serial.print("lastencoded: ");
+    Serial.println(lastEncoded);
 
-	   Serial.print("encoded: ");
-	   Serial.println(encoded);
-	}
+    Serial.print("encoded: ");
+    Serial.println(encoded);
+  }
 
-	//Serial.println(encoderValue);
   lastEncoded = encoded; //store this value for next time
 }
