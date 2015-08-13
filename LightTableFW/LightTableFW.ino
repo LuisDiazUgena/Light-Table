@@ -65,48 +65,58 @@ void loop(){
   if(digitalRead(encoderSwitchPin)){
     //button is being pushed
 		if (debug) Serial.println("click!");
-		manageClick();
 		manageColor();
 	}
 
-  Serial.println(encoderValue);
-  delay(100); //just here to slow down the output, and show it will work  even during a delay
+	encoderValue = constrain(encoderValue,0,255);
+	analogWrite(pinR, encoderValue);
+	analogWrite(pinG, encoderValue);
+	analogWrite(pinB, encoderValue);
+
+	Serial.println(encoderValue);
+	
+  delay(100); //just here to slow down the output, and show it. will work even during a delay
 }
 
-void manageClick(){
-	if (color=3){
-		color=0;
-	}else{
-		color++;
-	}
-}
 int manageColor(){
-	int auxR=red,auxG = green,auxB = blue;
+	delay(250);
+
+	Serial.print("color = ");
+	Serial.println(color);
 
 	encoderValue=0;
-
+	if(color==0){
 	digitalWrite(pinR,LOW);
 	digitalWrite(pinG,LOW);
 	digitalWrite(pinB,LOW);
+	}
 
 	do{
 		if(color == 0){
 			//Red is changing
 			red = constrain(encoderValue,0,255);
+			analogWrite(pinR, red);
 		}else if(color == 1){
 			//Green is changing
 			green = constrain(encoderValue,0,255);
+			analogWrite(pinG,green);
 		}else if(color == 2){
 			//Blue is changing
 			blue = constrain(encoderValue,0,255);
+			analogWrite(pinB, blue);
 		}
-	}while(digitalRead(encoderSwitchPin));
-	
+	}while(!digitalRead(encoderSwitchPin));
+
 	color++;
 
 	if(color!=3){
 		manageColor();
 	}else{
+		analogWrite(pinR, red);
+		analogWrite(pinG,green);
+		analogWrite(pinB, blue);
+		color=0;
+		delay(250);
 		return 0;
 	}
 
@@ -131,5 +141,6 @@ void updateEncoder(){
 	   Serial.println(encoded);
 	}
 
+	//Serial.println(encoderValue);
   lastEncoded = encoded; //store this value for next time
 }
