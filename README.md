@@ -10,11 +10,14 @@ Arduino shield drives from 12V DC Jack (Center positive) and power Arduino throu
 
 ##Arduino Firmware
 
+Support single or long click.
+
+Single click put FW in color selection mode.
+Long click put clear leds.
+
 **To-Do**
 
-Control each color with the encoder.
-
-Control each color over Bluetooth and Android/Protocoder App.
+Control color over Bluetooth and Android/Protocoder App.
 
 ##Hardware Used
 
