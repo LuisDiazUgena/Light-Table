@@ -1,4 +1,4 @@
-update=Wed 12 Aug 2015 18:07:55 CEST
+update=Thu 13 Aug 2015 09:20:18 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -33,6 +33,8 @@ NetFmtName=
 SpiceForceRefPrefix=0
 SpiceUseNetNumbers=0
 LabSize=60
+[general]
+version=1
 [eeschema]
 version=1
 LibDir=
@@ -71,10 +73,7 @@ LibName31=contrib
 LibName32=valves
 LibName33=Libraries/icsp
 LibName34=Libraries/arduino_shieldsNCL
-LibName35=Libraries/KM_rotary-switch/switch-enc
-LibName36=Libraries/encoder_5_pins
-LibName37=Libraries/borniers
-LibName38=Libraries/IRF3205
-LibName39=Libraries/ab2_terminal_block
-[general]
-version=1
+LibName35=Libraries/encoder_5_pins
+LibName36=Libraries/borniers
+LibName37=Libraries/IRF3205
+LibName38=Libraries/ab2_terminal_block
