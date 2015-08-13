@@ -343,10 +343,10 @@
     )
   )
 
-  (module arduino_shields:ARDUINO_SHIELD_2_040pins (layer F.Cu) (tedit 55CC653C) (tstamp 55CC611E)
+  (module arduino_shields:ARDUINO_SHIELD_2_040pins (layer F.Cu) (tedit 55CC779F) (tstamp 55CC611E)
     (at 72.39 104.14)
     (path /55CB5DD9)
-    (fp_text reference SHIELD1 (at 5.715 -57.15) (layer F.SilkS)
+    (fp_text reference Led_Strip_Driver-shield (at 13.335 -56.515) (layer F.SilkS)
       (effects (font (thickness 0.3048)))
     )
     (fp_text value ARDUINO_SHIELD (at 10.16 -54.61) (layer F.SilkS) hide
