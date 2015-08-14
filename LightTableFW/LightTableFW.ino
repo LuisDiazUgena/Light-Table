@@ -33,6 +33,7 @@ int red = 255, green = 255, blue = 255;
 //Time variables
 long unsigned nextTime, intervale = 1000; // Change intervale to modify long time click
 bool clicked = false;
+
 void setup() {
 
   Serial.begin (19200); // Needs to be 19200 to work with ZUM BT-328 Bluetooth.
@@ -63,6 +64,31 @@ void setup() {
 
 void loop() {
 
+/*
+  Bluetooth functions
+*/
+
+if(Serial.available()>0){
+
+  red = Serial.parseInt();
+  green = Serial.parseInt();
+  blue = Serial.parseInt();
+
+  if(Serial.read()=='\n'){
+    red = constrain(red,0,255);
+    green = constrain(green,0,255);
+    blue = constrain(blue,0,255);
+
+    analogWrite(pinR, red);
+    analogWrite(pinG, green);
+    analogWrite(pinB, blue);
+  }
+}
+
+/*
+  Encoder functions
+*/
+
   nextTime = millis() + intervale;
   while (digitalRead(encoderSwitchPin)) {
     clicked = true;
@@ -79,18 +105,22 @@ void loop() {
     clicked = false;
   }else{
     encoderValue = constrain(encoderValue, 0, 255);
-    analogWrite(pinR, encoderValue);
-    analogWrite(pinG, encoderValue);
-    analogWrite(pinB, encoderValue);
+    if(lastencoderValue != encoderValue){
+      updateAllColors(encoderValue);
+    }
   }
-
 
   delay(100); //just here to slow down the output, and show it. will work even during a delay
 }
+
+void updateAllColors(int value){
+  analogWrite(pinR, value);
+  analogWrite(pinG, value);
+  analogWrite(pinB, value);
+}
+
 void clear(){
-  digitalWrite(pinR, LOW);
-  digitalWrite(pinG, LOW);
-  digitalWrite(pinB, LOW);
+  updateAllColors(0);
   encoderValue=0;
 }
 int manageColor() {
