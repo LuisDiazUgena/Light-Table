@@ -10,14 +10,17 @@ Arduino shield drives from 12V DC Jack (Center positive) and power Arduino throu
 
 ##Arduino Firmware
 
-Support single or long click.
-
-Single click put FW in color selection mode.
-Long click put clear leds.
-
-**To-Do**
-
+Support single or long click: Single click put FW in color selection mode and long click clears the leds.
 Control color over Bluetooth and Android/Protocoder App.
+
+##Android Apps
+###Protocoder
+
+Protocoder app is used to control color on the light table over Bluetooth. You can download both code and project from Android apps folder.
+
+###App Inventor
+
+**To-Do**.
 
 ##Hardware Used
 
