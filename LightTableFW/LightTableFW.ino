@@ -81,7 +81,7 @@ if(Serial.available()>0){
 
     analogWrite(pinR, red);
     analogWrite(pinG, green);
-    analogWrite(pinB, blue);
+    analogWrite(pi nB, blue);
   }
 }
 
@@ -97,7 +97,11 @@ if(Serial.available()>0){
   if (clicked) {
     if (millis() > nextTime) {
       //Long click
-      clear();
+      if(encoderValue==0){
+        updateAllColors(255);
+      }else{
+        clear();
+      }
     } else {
       //Short click
       manageColor();
