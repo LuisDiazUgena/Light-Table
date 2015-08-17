@@ -189,8 +189,6 @@ Text GLabel 9750 3100 2    60   Input ~ 0
 PBtn
 Wire Wire Line
 	9550 3750 9550 3550
-Text GLabel 8000 2500 2    60   Input ~ 0
-PBtn
 Wire Wire Line
 	8000 2500 7750 2500
 $Comp
@@ -546,4 +544,36 @@ Wire Wire Line
 	3200 2850 3200 2800
 Wire Wire Line
 	3200 2400 3200 2300
+Text GLabel 8000 2700 2    60   Input ~ 0
+PBtn
+Wire Wire Line
+	8000 2700 7750 2700
+$Comp
+L LED D2
+U 1 1 55D1C885
+P 8200 2500
+F 0 "D2" H 8200 2600 50  0000 C CNN
+F 1 "Long" H 8200 2400 50  0000 C CNN
+F 2 "LEDs:LED-5MM" H 8200 2500 60  0001 C CNN
+F 3 "" H 8200 2500 60  0000 C CNN
+	1    8200 2500
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R3
+U 1 1 55D1C88B
+P 8700 2500
+F 0 "R3" V 8780 2500 50  0000 C CNN
+F 1 "330" V 8700 2500 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 8630 2500 30  0001 C CNN
+F 3 "" H 8700 2500 30  0000 C CNN
+	1    8700 2500
+	0    -1   -1   0   
+$EndComp
+Text GLabel 9000 2500 2    60   Input ~ 0
+GND
+Wire Wire Line
+	8550 2500 8400 2500
+Wire Wire Line
+	8850 2500 9000 2500
 $EndSCHEMATC

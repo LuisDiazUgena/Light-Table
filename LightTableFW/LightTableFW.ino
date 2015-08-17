@@ -10,8 +10,9 @@ Light table FW
 //interrupt 0 (pin 2) and interrupt 1 (pin 3)
 int encoderPin1 = 3;
 int encoderPin2 = 2;
-int encoderSwitchPin = 7; //push button switch
+int encoderSwitchPin = 5; //push button switch
 
+int pinledLong = 7;
 int sum;
 
 volatile int lastEncoded = 3; //You must initialize the encoders pins on 11 (3) !!!
@@ -97,10 +98,11 @@ if(Serial.available()>0){
   while (digitalRead(encoderSwitchPin)) {
     clicked = true;
     if(millis()>nextTime){
-      digitalWrite(13, HIGH);
+      digitalWrite(pinledLong, HIGH);
     }
   }
-  digitalWrite(13, LOW);
+  digitalWrite(pinledLong, LOW);
+
   if (clicked) {
     if (millis() > nextTime) {
       //Long click
