@@ -34,6 +34,9 @@ int red = 255, green = 255, blue = 255;
 long unsigned nextTime, intervale = 1000; // Change intervale to modify long time click
 bool clicked = false;
 
+//Fan
+int pinFan = 4;
+bool fanOn = false;
 void setup() {
 
   Serial.begin (19200); // Needs to be 19200 to work with ZUM BT-328 Bluetooth.
@@ -43,6 +46,8 @@ void setup() {
   pinMode(encoderPin2, INPUT);
 
   pinMode(encoderSwitchPin, INPUT);
+
+  pinMode(pinFan, OUTPUT);
 
   digitalWrite(encoderPin1, HIGH); //turn pullup resistor on
   digitalWrite(encoderPin2, HIGH); //turn pullup resistor on
@@ -69,7 +74,6 @@ void loop() {
 */
 
 if(Serial.available()>0){
-
   red = Serial.parseInt();
   green = Serial.parseInt();
   blue = Serial.parseInt();
@@ -81,7 +85,7 @@ if(Serial.available()>0){
 
     analogWrite(pinR, red);
     analogWrite(pinG, green);
-    analogWrite(pi nB, blue);
+    analogWrite(pinB, blue);
   }
 }
 
@@ -92,14 +96,19 @@ if(Serial.available()>0){
   nextTime = millis() + intervale;
   while (digitalRead(encoderSwitchPin)) {
     clicked = true;
+    if(millis()>nextTime){
+      digitalWrite(13, HIGH);
+    }
   }
-
+  digitalWrite(13, LOW);
   if (clicked) {
     if (millis() > nextTime) {
       //Long click
       if(encoderValue==0){
-        updateAllColors(255);
+        fanOn=true;
+        AllOn();
       }else{
+        fanOn=false;
         clear();
       }
     } else {
@@ -108,10 +117,19 @@ if(Serial.available()>0){
     }
     clicked = false;
   }else{
-    encoderValue = constrain(encoderValue, 0, 255);
     if(lastencoderValue != encoderValue){
       updateAllColors(encoderValue);
     }
+  }
+
+  /*
+    Fan functions
+  */
+
+  if (fanOn){
+    digitalWrite(pinFan, HIGH);
+  }else{
+    digitalWrite(pinFan, LOW);
   }
 
   delay(100); //just here to slow down the output, and show it. will work even during a delay
@@ -122,10 +140,13 @@ void updateAllColors(int value){
   analogWrite(pinG, value);
   analogWrite(pinB, value);
 }
-
+void AllOn(){
+  encoderValue=255;
+  updateAllColors(encoderValue);
+}
 void clear(){
-  updateAllColors(0);
   encoderValue=0;
+  updateAllColors(encoderValue);
 }
 int manageColor() {
   delay(250);
@@ -142,15 +163,15 @@ int manageColor() {
   do {
     if (color == 0) {
       //Red is changing
-      red = constrain(encoderValue, 0, 255);
+      red = encoderValue;
       analogWrite(pinR, red);
     } else if (color == 1) {
       //Green is changing
-      green = constrain(encoderValue, 0, 255);
+      green = encoderValue;
       analogWrite(pinG, green);
     } else if (color == 2) {
       //Blue is changing
-      blue = constrain(encoderValue, 0, 255);
+      blue = encoderValue;
       analogWrite(pinB, blue);
     }
   } while (!digitalRead(encoderSwitchPin));
@@ -160,9 +181,11 @@ int manageColor() {
   if (color != 3) {
     manageColor();
   } else {
+    /*
     analogWrite(pinR, red);
     analogWrite(pinG, green);
     analogWrite(pinB, blue);
+    */
     color = 0;
     delay(250);
     return 0;
@@ -181,6 +204,8 @@ void updateEncoder() {
   if (sum == 0b1101 || sum == 0b0100 || sum == 0b0010 || sum == 0b1011) encoderValue ++;
   if (sum == 0b1110 || sum == 0b0111 || sum == 0b0001 || sum == 0b1000) encoderValue --;
 
+  encoderValue = constrain(encoderValue,0,255); //Fixed encoder value to 0-255 range
+
   if (debug) {
     Serial.print("lastencoded: ");
     Serial.println(lastEncoded);
@@ -188,6 +213,10 @@ void updateEncoder() {
     Serial.print("encoded: ");
     Serial.println(encoded);
   }
-
+  if(encoderValue == 0){
+    fanOn = false;
+  }else{
+    fanOn =true;
+  }
   lastEncoded = encoded; //store this value for next time
 }
