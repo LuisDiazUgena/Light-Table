@@ -13,6 +13,7 @@ int encoderPin2 = 2;
 int encoderSwitchPin = 5; //push button switch
 
 int pinledLong = 7;
+
 int sum;
 
 volatile int lastEncoded = 3; //You must initialize the encoders pins on 11 (3) !!!
