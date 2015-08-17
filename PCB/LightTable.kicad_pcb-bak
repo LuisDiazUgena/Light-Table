@@ -3,7 +3,7 @@
   (general
     (links 39)
     (no_connects 1)
-    (area 0 0 0 0)
+    (area 70.04298 45.466 144.552572 105.9942)
     (thickness 1.6)
     (drawings 0)
     (tracks 76)
@@ -704,7 +704,7 @@
   (segment (start 92.71 90.17) (end 92.71 96.52) (width 1.524) (layer F.Cu) (net 2))
   (segment (start 93.472 97.282) (end 93.472 99.06) (width 1.524) (layer F.Cu) (net 2) (tstamp 55CC6986))
   (segment (start 92.71 96.52) (end 93.472 97.282) (width 1.524) (layer F.Cu) (net 2) (tstamp 55CC6984))
-  (segment (start 121.285 90.17) (end 114.3 90.17) (width 1.016) (layer F.Cu) (net 3) (status 400000))
+  (segment (start 121.285 90.17) (end 114.3 90.17) (width 1.016) (layer F.Cu) (net 3))
   (segment (start 97.79 90.17) (end 114.3 90.17) (width 1.016) (layer F.Cu) (net 3))
   (segment (start 115.276 91.146) (end 115.276 93.726) (width 1.016) (layer F.Cu) (net 3) (tstamp 55CC6B30))
   (segment (start 114.3 90.17) (end 115.276 91.146) (width 1.016) (layer F.Cu) (net 3) (tstamp 55CC6B2F))
@@ -765,7 +765,7 @@
   (segment (start 107.315 66.04) (end 108.966 64.389) (width 0.762) (layer F.Cu) (net 30) (tstamp 55CC6A88))
   (segment (start 95.25 66.04) (end 107.315 66.04) (width 0.762) (layer F.Cu) (net 30) (tstamp 55CC6A86))
   (segment (start 93.98 67.31) (end 95.25 66.04) (width 0.762) (layer F.Cu) (net 30) (tstamp 55CC6A85))
-  (segment (start 123.825 90.17) (end 131.445 90.17) (width 1.016) (layer F.Cu) (net 31) (status C00000))
+  (segment (start 123.825 90.17) (end 131.445 90.17) (width 1.016) (layer F.Cu) (net 31))
 
   (zone (net 1) (net_name GND) (layer F.Cu) (tstamp 55CC6A04) (hatch edge 0.508)
     (connect_pads (clearance 0.508))
