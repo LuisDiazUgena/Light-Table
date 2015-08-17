@@ -86,3 +86,12 @@ Protocoder app is used to control color on the light table over Bluetooth. You c
     <td class="tg-031e">LM7805</td>
   </tr>
 </table>
+
+##Issues
+
+Inefficient power regulation (n = 0.41667). Generates so much heat. Solutions:
+
+1. Will change Lm7805 module to 78XXSR Murata switching regulator.
+2. Add a heatsink (Still to much heat) and a fan.
+
+By using a efficient power regulation will not need to use heatsink and/or fan.
