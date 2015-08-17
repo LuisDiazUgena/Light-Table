@@ -4,7 +4,7 @@ Light Table design files & Firmware
 
 ##Arduino shield
 
-<img src="pcb_layout.png" alt="Curso de introducción a MIT App Inventor" width="100%" align = "center" />
+<img src="pcb_layout.png" width="100%" align = "center" />
 
 Arduino shield drives from 12V DC Jack (Center positive) and power Arduino through a voltage regulator (LM7805) with decoupling caps. Works with pwm to control Mosfets (IRF3205) (Up to 1.2A/Mosfet).
 
@@ -89,9 +89,17 @@ Protocoder app is used to control color on the light table over Bluetooth. You c
 
 ##Issues
 
-Inefficient power regulation (n = 0.41667). Generates so much heat. Solutions:
+### 1: Inefficient power regulation (n = 0.41667).
 
-1. Will change Lm7805 module to 78XXSR Murata switching regulator.
-2. Add a heatsink (Still to much heat) and a fan.
+Generates so much heat. Solutions:
 
-By using a efficient power regulation will not need to use heatsink and/or fan.
+1. Change Lm7805 module to 78XXSR Murata switching regulator.
+2. Add a Heatsink (Still to much heat) and a fan.
+
+By using a efficient power regulation will not need to use heat sink and/or fan.
+
+Will change LM7805 module to a 7805SRH-C module. efficiency graph:
+
+<img src="7805SRH-C.png" width="100%" align = "center" />
+
+As it will have 12V as input voltage will get from 87 to 90% efficiency.
