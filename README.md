@@ -4,9 +4,16 @@ Light Table design files & Firmware
 
 ##Arduino shield
 
+###Regulated version
 <img src="pcb_layout.png" width="100%" align = "center" />
 
-Arduino shield drives from 12V DC Jack (Center positive) and power Arduino through a voltage regulator (LM7805) with decoupling caps. Works with pwm to control Mosfets (IRF3205) (Up to 1.2A/Mosfet).
+Arduino shield drives from 12V DC Jack (Center positive) and power Arduino through a voltage regulator (LM7805/Murata 7805SRH-C) with decoupling caps. Works with pwm to control Mosfets (IRF3205) (Up to 1.2A/Mosfet).
+
+**If using Murata 7805SRH-C do not use decoupling caps, there is no need for it.**
+
+### Non regulated version
+
+Power the whole thing with 12V connected on the DC Jack of the shield (**Do not connect other jack on the board**). If your board is a cheap clone or you are not sure that it got a good regulator or protection, use regulated version.
 
 ##Arduino Firmware
 
@@ -20,7 +27,7 @@ Protocoder app is used to control color on the light table over Bluetooth. You c
 
 ###App Inventor
 
-**To-Do**.
+App Inventor app is used to control color on the light table over Bluetooth. You can download both code and project from Android apps folder.
 
 ##Hardware Used
 
