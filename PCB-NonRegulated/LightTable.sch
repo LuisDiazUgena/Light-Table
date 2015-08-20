@@ -125,7 +125,7 @@ Text GLabel 3000 5050 2    60   Input ~ 0
 GND
 Text GLabel 2400 5450 3    60   Input ~ 0
 R
-Text GLabel 8050 2000 2    60   Input ~ 0
+Text GLabel 8050 2200 2    60   Input ~ 0
 PWM_R
 Text GLabel 3800 5450 3    60   Input ~ 0
 R
@@ -214,7 +214,7 @@ Text GLabel 9550 3750 3    60   Input ~ 0
 GND
 Text GLabel 8050 2100 2    60   Input ~ 0
 PWM_G
-Text GLabel 8050 2200 2    60   Input ~ 0
+Text GLabel 8050 2000 2    60   Input ~ 0
 PWM_B
 $Comp
 L CONN_01X01 P2
@@ -475,33 +475,29 @@ Wire Wire Line
 Wire Wire Line
 	8850 2500 9000 2500
 Wire Wire Line
-	1550 2750 1800 2750
-Wire Wire Line
-	2250 2750 2200 2750
-Wire Wire Line
 	2600 2750 2550 2750
 Text GLabel 2600 2750 2    60   Input ~ 0
 GND
 $Comp
 L R R2
 U 1 1 55CC852C
-P 2400 2750
-F 0 "R2" V 2480 2750 50  0000 C CNN
-F 1 "330" V 2400 2750 50  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 2330 2750 30  0001 C CNN
-F 3 "" H 2400 2750 30  0000 C CNN
-	1    2400 2750
+P 1850 2750
+F 0 "R2" V 1930 2750 50  0000 C CNN
+F 1 "330" V 1850 2750 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 1780 2750 30  0001 C CNN
+F 3 "" H 1850 2750 30  0000 C CNN
+	1    1850 2750
 	0    -1   -1   0   
 $EndComp
 $Comp
 L LED D1
 U 1 1 55CC841D
-P 2000 2750
-F 0 "D1" H 2000 2850 50  0000 C CNN
-F 1 "PWR" H 2000 2650 50  0000 C CNN
-F 2 "LEDs:LED-5MM" H 2000 2750 60  0001 C CNN
-F 3 "" H 2000 2750 60  0000 C CNN
-	1    2000 2750
+P 2350 2750
+F 0 "D1" H 2350 2850 50  0000 C CNN
+F 1 "PWR" H 2350 2650 50  0000 C CNN
+F 2 "LEDs:LED-5MM" H 2350 2750 60  0001 C CNN
+F 3 "" H 2350 2750 60  0000 C CNN
+	1    2350 2750
 	-1   0    0    1   
 $EndComp
 Text GLabel 1550 2750 0    60   Input ~ 0
@@ -519,4 +515,8 @@ F 3 "" H 5500 2500 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	5500 2500 5850 2500
+Wire Wire Line
+	1700 2750 1550 2750
+Wire Wire Line
+	2000 2750 2150 2750
 $EndSCHEMATC

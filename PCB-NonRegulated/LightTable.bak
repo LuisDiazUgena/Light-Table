@@ -125,7 +125,7 @@ Text GLabel 3000 5050 2    60   Input ~ 0
 GND
 Text GLabel 2400 5450 3    60   Input ~ 0
 R
-Text GLabel 8050 2000 2    60   Input ~ 0
+Text GLabel 8050 2200 2    60   Input ~ 0
 PWM_R
 Text GLabel 3800 5450 3    60   Input ~ 0
 R
@@ -214,7 +214,7 @@ Text GLabel 9550 3750 3    60   Input ~ 0
 GND
 Text GLabel 8050 2100 2    60   Input ~ 0
 PWM_G
-Text GLabel 8050 2200 2    60   Input ~ 0
+Text GLabel 8050 2000 2    60   Input ~ 0
 PWM_B
 $Comp
 L CONN_01X01 P2
@@ -338,8 +338,6 @@ F 3 "" H 8700 2500 30  0000 C CNN
 $EndComp
 Text GLabel 9000 2500 2    60   Input ~ 0
 GND
-Wire Wire Line
-	5600 2500 5850 2500
 Wire Wire Line
 	5600 2300 5850 2300
 Wire Wire Line
@@ -476,38 +474,49 @@ Wire Wire Line
 	8550 2500 8400 2500
 Wire Wire Line
 	8850 2500 9000 2500
-Text GLabel 5600 2500 0    60   Input ~ 0
-V5
 Wire Wire Line
-	2900 2150 2900 2400
+	1550 2750 1800 2750
 Wire Wire Line
-	2900 2850 2900 2800
+	2250 2750 2200 2750
 Wire Wire Line
-	2900 3200 2900 3150
-Text GLabel 2900 3200 3    60   Input ~ 0
+	2600 2750 2550 2750
+Text GLabel 2600 2750 2    60   Input ~ 0
 GND
 $Comp
 L R R2
 U 1 1 55CC852C
-P 2900 3000
-F 0 "R2" V 2980 3000 50  0000 C CNN
-F 1 "330" V 2900 3000 50  0000 C CNN
-F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 2830 3000 30  0001 C CNN
-F 3 "" H 2900 3000 30  0000 C CNN
-	1    2900 3000
-	1    0    0    -1  
+P 2400 2750
+F 0 "R2" V 2480 2750 50  0000 C CNN
+F 1 "330" V 2400 2750 50  0000 C CNN
+F 2 "Resistors_ThroughHole:Resistor_Horizontal_RM10mm" V 2330 2750 30  0001 C CNN
+F 3 "" H 2400 2750 30  0000 C CNN
+	1    2400 2750
+	0    -1   -1   0   
 $EndComp
 $Comp
 L LED D1
 U 1 1 55CC841D
-P 2900 2600
-F 0 "D1" H 2900 2700 50  0000 C CNN
-F 1 "PWR" H 2900 2500 50  0000 C CNN
-F 2 "LEDs:LED-5MM" H 2900 2600 60  0001 C CNN
-F 3 "" H 2900 2600 60  0000 C CNN
-	1    2900 2600
+P 2000 2750
+F 0 "D1" H 2000 2850 50  0000 C CNN
+F 1 "PWR" H 2000 2650 50  0000 C CNN
+F 2 "LEDs:LED-5MM" H 2000 2750 60  0001 C CNN
+F 3 "" H 2000 2750 60  0000 C CNN
+	1    2000 2750
+	-1   0    0    1   
+$EndComp
+Text GLabel 1550 2750 0    60   Input ~ 0
+VCC
+$Comp
+L +12V #PWR?
+U 1 1 55D35A1C
+P 5500 2500
+F 0 "#PWR?" H 5500 2350 60  0001 C CNN
+F 1 "+12V" H 5500 2640 60  0000 C CNN
+F 2 "" H 5500 2500 60  0000 C CNN
+F 3 "" H 5500 2500 60  0000 C CNN
+	1    5500 2500
 	0    -1   -1   0   
 $EndComp
-Text GLabel 2900 2150 1    60   Input ~ 0
-VCC
+Wire Wire Line
+	5500 2500 5850 2500
 $EndSCHEMATC
